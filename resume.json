@@ -1,0 +1,379 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/schema.json",
+  "meta": {
+    "canonical": "https://registry.jsonresume.org/medfreeman",
+    "theme": "modern-classic",
+    "version": "v1.0.0",
+    "lastModified": "2026-09-17",
+    "pdfRenderOptions": {
+      "format": "A4",
+      "printBackground": true
+    }
+  },
+  "basics": {
+    "name": "Mehdi Lahlou",
+    "label": "Tech Lead - Business Application Architect",
+    "image": "",
+    "email": "mlahlou@protonmail.ch",
+    "phone": "078.700.04.99",
+    "summary": "Tech lead and business application architect with 20 years of experience spanning frontend, backend, DevOps, and systems administration. Track record of leading development teams, architecting cloud solutions, and delivering API-first, subscription-based platforms.",
+    "location": {
+      "address": "Route du coin cornu 111",
+      "postalCode": "74140",
+      "city": "Massongy",
+      "countryCode": "FR",
+      "region": ""
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "medfreeman",
+        "url": "https://github.com/medfreeman"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "medfreeman",
+        "url": "https://www.linkedin.com/in/medfreeman/"
+      },
+      {
+        "network": "Stackshare",
+        "username": "medfreeman",
+        "url": "https://stackshare.io/medfreeman"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Ilem SA / RTS",
+      "position": "Lead developer - full stack",
+      "location": "Lausanne / Remote",
+      "startDate": "2022-10",
+      "endDate": "2023-04",
+      "summary": "Developed a new version of a search engine for all media published since the 1920s.",
+      "highlights": [
+        "Nuxt 3/Vue.js/Typescript",
+        "OpenAPI",
+        "Quarkus/Kotlin",
+        "Clean Architecture",
+        "SOLR",
+        "Azure",
+        "Terraform"
+      ]
+    },
+    {
+      "name": "Reveel",
+      "position": "Developer - full stack",
+      "location": "USA / Remote",
+      "startDate": "2022-03",
+      "endDate": "2022-04",
+      "summary": "Setup a solid architectural & graphical foundation for the revenue sharing platform.",
+      "highlights": [
+        "Next.js/React/Typescript",
+        "MetaMask",
+        "Ethereum",
+        "DApps"
+      ]
+    },
+    {
+      "name": "DigiDNA",
+      "position": "Lead developer - full stack",
+      "location": "Geneva",
+      "startDate": "2018-12",
+      "endDate": "2021-12",
+      "summary": "Successfully led the specification, planning, implementation, code reviews, documentation, tools, and continuous delivery of a software licensing platform including a REST API, administration app & shop app while the company transitioned to a subscription model. Applied API-first development methodologies & refined best practices. Mentored developers.",
+      "highlights": [
+        "MongoDB",
+        "Typescript",
+        "Node.js",
+        "Koa",
+        "JSON Schema",
+        "OpenAPI",
+        "React",
+        "MUI",
+        "Google Cloud",
+        "Testing"
+      ]
+    },
+    {
+      "name": "Empica",
+      "position": "Senior full stack web developer",
+      "location": "Geneva",
+      "startDate": "2018-02",
+      "endDate": "2018-09",
+      "summary": "HR apps / frontend component framework development and documentation in Angular.js in a SharePoint setting; R&D; living style guide development (gulp, 11ty, jsdoc). Tool stack development in node.js (gulp 4, webpack 4, babel 7). DevOps methodologies advocate in an Agile setting; deployment tools.",
+      "highlights": [
+        "Angular.js",
+        "SharePoint",
+        "gulp",
+        "11ty",
+        "jsdoc",
+        "webpack 4",
+        "babel 7"
+      ]
+    },
+    {
+      "name": "Abbeal / Recast.AI",
+      "position": "Full stack web developer",
+      "location": "Paris / Remote",
+      "startDate": "2017-10",
+      "endDate": "2017-12",
+      "summary": "Chatbot connector integration with various platforms (Messenger, Alexa, Line, Telegram, Twitter, Nexmo, Microsoft Bot Platform) in an API setting in node.js, with API documentation. Simple chatbot development and review. R&D for object shape transform through structured data (RDF / JSON-LD / SHACL). React.js proof of concept; technical specs for frontend OAuth integrations.",
+      "highlights": [
+        "Node.js",
+        "Chatbots",
+        "RDF / JSON-LD / SHACL",
+        "React.js",
+        "OAuth"
+      ]
+    },
+    {
+      "name": "Freelance",
+      "position": "Full stack web developer & Linux system administrator",
+      "location": "Geneva",
+      "startDate": "2011",
+      "endDate": "2017",
+      "summary": "Full stack development and Linux systems administration for various clients.",
+      "highlights": [
+        "JavaScript",
+        "Node.js",
+        "React",
+        "Redux",
+        "Vue",
+        "PHP",
+        "WordPress",
+        "Drupal",
+        "C++",
+        "Perl",
+        "Python",
+        "Bash",
+        "Linux hosting",
+        "DNS",
+        "DevOps & networks",
+        "Mail servers & ticketing solutions",
+        "E-commerce",
+        "Collaborative tools design and administration"
+      ]
+    },
+    {
+      "name": "Horus Digital Solutions",
+      "position": "Systems & network administrator",
+      "location": "Geneva",
+      "startDate": "2007",
+      "endDate": "2010",
+      "summary": "Linux and Windows administration, Exchange server administration, workstation automated deployment & admin (~100 workstations). Hosting server administration (~100 clients) & migration, data sharing, VPN, end user support. PHP development, multi-room audio solutions, and live video broadcasting.",
+      "highlights": [
+        "Linux",
+        "Windows",
+        "Exchange",
+        "VPN",
+        "PHP",
+        "Live video broadcasting"
+      ]
+    },
+    {
+      "name": "HUG",
+      "position": "Technical writer",
+      "location": "Geneva",
+      "startDate": "2007",
+      "endDate": "2007",
+      "summary": "",
+      "highlights": []
+    },
+    {
+      "name": "UniGE",
+      "position": "Website content planner & writer",
+      "location": "Geneva",
+      "startDate": "2006",
+      "endDate": "2007",
+      "summary": "",
+      "highlights": []
+    }
+  ],
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "BTS IRIS",
+      "area": "Computer engineering & Networks for Industry & Technical Services",
+      "studyType": "Diploma (BTS)",
+      "startDate": "2004",
+      "endDate": "2005",
+      "score": "",
+      "courses": [],
+      "location": "Lyon"
+    },
+    {
+      "institution": "DUT GTR",
+      "area": "Networks and Telecommunications engineering",
+      "studyType": "DUT",
+      "startDate": "2003",
+      "endDate": "2004",
+      "score": "",
+      "courses": [],
+      "location": "Annecy"
+    },
+    {
+      "institution": "Maths Sup",
+      "area": "PCSI - Preparatory class for \"Grandes écoles\"",
+      "studyType": "Preparatory class",
+      "startDate": "2002",
+      "endDate": "2003",
+      "score": "",
+      "courses": [],
+      "location": "Chambéry"
+    }
+  ],
+  "awards": [],
+  "certificates": [],
+  "publications": [],
+  "skills": [
+    {
+      "name": "Leadership & Practices",
+      "level": "",
+      "keywords": [
+        "Code",
+        "Review code",
+        "Mentor developers",
+        "Provide specifications",
+        "Architect cloud solutions",
+        "Design frameworks, DBs and APIs",
+        "Assess tech. debt, perf & security risks",
+        "Following Scrum & Xtreme methodologies",
+        "Contribute back to open-source repositories",
+        "Test-driven development",
+        "Clean architecture patterns",
+        "Twelve factor app & docs",
+        "Functional style (Ramda)",
+        "Type-level development",
+        "Meta programming / AST transformers",
+        "Monorepos (pnpm, turborepo, yarn 3)"
+      ]
+    },
+    {
+      "name": "Backend",
+      "level": "",
+      "keywords": [
+        "API-first practices",
+        "OpenAPI definitions",
+        "Quarkus",
+        "Kotlin",
+        "Spring Boot",
+        "Sockets",
+        "Koa",
+        "Nest.js",
+        "Express",
+        "Hasura GraphQL",
+        "Nexus",
+        "Prisma",
+        "MongoDB",
+        "SQL modeling & monitoring",
+        "OAuth/Auth policies",
+        "Casbin"
+      ]
+    },
+    {
+      "name": "Frontend",
+      "level": "",
+      "keywords": [
+        "Web components",
+        "React",
+        "Vue",
+        "Angular.js",
+        "Redux",
+        "Routing",
+        "XState machines",
+        "MDX",
+        "Next.js",
+        "Remix",
+        "Jamstack",
+        "Nuxt",
+        "Astro",
+        "Encapsulation / app embedding",
+        "Shadow DOM",
+        "Framer",
+        "Remotion",
+        "SVG / SMIL",
+        "CSS animations",
+        "SASS",
+        "Atomic CSS",
+        "Tailwind",
+        "Emotion",
+        "Modules",
+        "I18n / A11Y",
+        "UX",
+        "Performance sensitive"
+      ]
+    },
+    {
+      "name": "Developer Experience",
+      "level": "",
+      "keywords": [
+        "VSCode",
+        "IntelliJ integrated environments",
+        "Prettier",
+        "ESLint rules dev",
+        "TSDoc",
+        "api-extractor",
+        "Git hooks (lefthook, husky)",
+        "Update bots",
+        "Snyk",
+        "Sonar",
+        "Semantic versioning",
+        "Changelogs",
+        "Vite",
+        "Rollup",
+        "Webpack",
+        "Esbuild",
+        "SWC",
+        "Plugin dev"
+      ]
+    },
+    {
+      "name": "DevOps",
+      "level": "",
+      "keywords": [
+        "Git flow",
+        "GitOps",
+        "Supply chain security",
+        "CI/CD pipelines",
+        "Docker containers",
+        "Terraform",
+        "Kubernetes (K8S)",
+        "Istio",
+        "Monitoring production",
+        "Disaster recovery",
+        "AWS",
+        "GCP",
+        "Azure",
+        "Cloudflare Workers",
+        "PaaS",
+        "FaaS"
+      ]
+    },
+    {
+      "name": "Other",
+      "level": "",
+      "keywords": [
+        "Generative design",
+        "Interactive installs",
+        "Raspberry Pi",
+        "VJing",
+        "WebGL",
+        "Kinect",
+        "Computer vision",
+        "Deep-learning theory",
+        "Custom mail servers",
+        "Photoshop",
+        "Illustrator",
+        "InDesign",
+        "PHP",
+        "R",
+        "Kotlin",
+        "Assembly"
+      ]
+    }
+  ],
+  "languages": [],
+  "interests": [],
+  "references": [],
+  "projects": []
+}
