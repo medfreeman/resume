@@ -31,9 +31,27 @@ Validate `resume.json` against the JSON Resume schema:
 npm test
 ```
 
+Check the rendered resume against ATS (Applicant Tracking System) best practices:
+
+```bash
+npm run validate
+```
+
+This renders `resume.json` with the theme and scores the output using [`@jsonresume/ats-validator`](https://github.com/jsonresume/jsonresume.org/tree/master/packages/ats-validator), failing if the score drops below 90/100.
+
+Check formatting:
+
+```bash
+npm run format
+```
+
+## Continuous integration
+
+The [`CI`](.github/workflows/ci.yml) workflow runs `npm run format`, `npm run typecheck`, `npm test`, and `npm run validate` on every push and pull request targeting `main`. The `validate` check is required on `main` (including for admins) via branch protection.
+
 ## Automatic registry updates
 
-The [live version](https://registry.jsonresume.org/medfreeman) is served from a GitHub Gist, kept in sync by the [`resume.yml`](.github/workflows/resume.yml) workflow, which pushes `resume.json` to that gist on every push to this repo.
+The [live version](https://registry.jsonresume.org/medfreeman) is served from a GitHub Gist, kept in sync by the [`resume.yml`](.github/workflows/resume.yml) workflow, which pushes `resume.json` to that gist on every push to `main`.
 
 One-time setup:
 
@@ -46,4 +64,4 @@ After this, pushing changes to `resume.json` updates the gist, and the registry 
 
 ## Development
 
-Commits are linted and formatted automatically via Husky and lint-staged (Prettier on `resume.json` and `resume.code-workspace`).
+Commits are linted and formatted automatically via Husky and lint-staged: Prettier on `resume.json` and `resume.code-workspace`, and type checking (`npm run typecheck`, via [jsconfig.json](jsconfig.json) and JSDoc annotations) on `scripts/**/*.mjs`.

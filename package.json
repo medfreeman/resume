@@ -22,20 +22,20 @@
     "render": "resumed render --theme jsonresume-theme-modern-classic/dist",
     "export": "resumed export --theme jsonresume-theme-modern-classic/dist --export ./resume.pdf",
     "test": "resumed validate ./resume.json",
+    "validate": "node scripts/validate.mjs 90",
+    "format": "prettier --check .",
+    "typecheck": "tsc -p jsconfig.json",
     "prepare": "husky"
   },
   "devDependencies": {
     "@jsonresume/ats-validator": "0.3.0",
+    "@types/node": "26.6.2",
     "husky": "9.1.7",
     "jsonresume-theme-modern-classic": "1.1.4",
     "lint-staged": "17.5.1",
     "prettier": "3.9.8",
     "puppeteer": "25.11.0",
-    "resumed": "7.0.0"
-  },
-  "lint-staged": {
-    "resume.code-workspace": "prettier --write",
-    "*.json": "prettier --write",
-    "*.yml": "prettier --write"
+    "resumed": "7.0.0",
+    "typescript": "7.0.2"
   }
 }
