@@ -26,6 +26,7 @@
     "format": "prettier --check .",
     "typecheck": "tsc -p jsconfig.json",
     "commitlint": "commitlint",
+    "bump-resume-meta": "node scripts/bump-resume-meta.mjs",
     "prepare": "husky"
   },
   "devDependencies": {

@@ -72,4 +72,4 @@ After this, pushing changes to `resume.json` updates the gist, and the registry 
 
 ## Development
 
-Commits are linted and formatted automatically via Husky: lint-staged runs Prettier on `resume.json` and `resume.code-workspace`, and type checking (`npm run typecheck`, via [jsconfig.json](jsconfig.json) and JSDoc annotations) on `scripts/**/*.mjs`; a `commit-msg` hook runs commitlint on the commit message.
+Commits are linted and formatted automatically via Husky: a `pre-commit` hook bumps `meta.version` (patch) and sets `meta.lastModified` to today whenever `resume.json` is staged (`npm run bump-resume-meta`), then lint-staged runs Prettier on `resume.json` and `resume.code-workspace`, and type checking (`npm run typecheck`, via [jsconfig.json](jsconfig.json) and JSDoc annotations) on `scripts/**/*.mjs`; a `commit-msg` hook runs commitlint on the commit message.
