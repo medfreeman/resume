@@ -37,7 +37,7 @@ Check the rendered resume against ATS (Applicant Tracking System) best practices
 npm run validate
 ```
 
-This renders `resume.json` with the theme and scores the output using [`@jsonresume/ats-validator`](https://github.com/jsonresume/jsonresume.org/tree/master/packages/ats-validator), failing if the score drops below 90/100.
+This renders `resume.json` with the theme and scores the output using [`@jsonresume/ats-validator`](https://github.com/jsonresume/jsonresume.org/tree/master/packages/ats-validator), failing if the score drops below 90/100. Output includes a per-check breakdown with the underlying issues (e.g. why a check lost points), not just the overall score.
 
 Check formatting:
 

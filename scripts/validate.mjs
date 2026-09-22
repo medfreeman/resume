@@ -46,12 +46,18 @@ async function setGithubOutput(name, value) {
 }
 
 /**
+ * @typedef {object} AtsIssue
+ * @property {'error'|'warning'|'info'} severity
+ * @property {string} message
+ */
+
+/**
  * @typedef {object} AtsCheck
  * @property {string} name
  * @property {number} score
  * @property {number} maxScore
  * @property {boolean} passed
- * @property {string[]} issues
+ * @property {AtsIssue[]} issues
  */
 
 /**
@@ -77,10 +83,24 @@ async function main() {
   console.log(
     `ATS score: ${result.score}/100 (${result.grade}, ${result.atsCompatibility})`,
   );
-  console.log(`Checks passed: ${result.passed}, failed: ${result.failed}`);
+  console.log(`Checks passed: ${result.passed}, failed: ${result.failed}\n`);
 
-  for (const recommendation of recommendations) {
-    console.log(recommendation);
+  for (const check of result.checks) {
+    console.log(
+      `${check.passed ? "✔" : "✘"} ${check.name}: ${check.score}/${check.maxScore}`,
+    );
+
+    for (const issue of check.issues) {
+      console.log(`    [${issue.severity}] ${issue.message}`);
+    }
+  }
+
+  if (recommendations.length) {
+    console.log("\nRecommendations:");
+
+    for (const recommendation of recommendations) {
+      console.log(recommendation);
+    }
   }
 
   await setGithubOutput("score", String(result.score));
@@ -94,10 +114,12 @@ async function main() {
       "",
       `**Compatibility:** ${result.atsCompatibility} · **Passed:** ${result.passed}/${result.checks.length} checks`,
       "",
-      ...result.checks.map(
-        (check) =>
-          `- ${check.passed ? "✅" : "❌"} ${check.name}: ${check.score}/${check.maxScore}`,
-      ),
+      ...result.checks.flatMap((check) => [
+        `- ${check.passed ? "✅" : "❌"} ${check.name}: ${check.score}/${check.maxScore}`,
+        ...check.issues.map(
+          (issue) => `  - *${issue.severity}:* ${issue.message}`,
+        ),
+      ]),
       "",
       ...(recommendations.length
         ? ["### Recommendations", ...recommendations.map((r) => `- ${r}`)]
