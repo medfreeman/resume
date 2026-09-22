@@ -35,6 +35,7 @@
   },
   "lint-staged": {
     "resume.code-workspace": "prettier --write",
-    "*.json": "prettier --write"
+    "*.json": "prettier --write",
+    "*.yml": "prettier --write"
   }
 }
