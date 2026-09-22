@@ -18,6 +18,9 @@
     "url": "https://registry.jsonresume.org/medfreeman"
   },
   "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "render": "resumed render --theme jsonresume-theme-modern-classic/dist",
     "export": "resumed export --theme jsonresume-theme-modern-classic/dist --export ./resume.pdf",

@@ -5,6 +5,11 @@ Mehdi Lahlou's resume, written in the [JSON Resume](https://jsonresume.org/) for
 - Source: [resume.json](resume.json)
 - Live version: <https://registry.jsonresume.org/medfreeman>
 
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) 24+ (matches [CI](.github/workflows/ci.yml))
+- [Git](https://git-scm.com/)
+
 ## Setup
 
 ```bash
@@ -69,6 +74,23 @@ One-time setup:
 4. Set that gist's ID as `gist_id` in `.github/workflows/resume.yml`.
 
 After this, a push to `main` that passes CI updates the gist, and the registry reflects it within a minute.
+
+## Dependencies
+
+All dependencies are dev-only — the resume itself has no runtime dependencies.
+
+| Package                                                                                                        | Used for                                                                  |
+| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [`resumed`](https://github.com/rbardini/resumed)                                                               | Rendering, PDF export, and schema validation (`render`, `export`, `test`) |
+| [`jsonresume-theme-modern-classic`](https://www.npmjs.com/package/jsonresume-theme-modern-classic)             | HTML/PDF theme                                                            |
+| [`puppeteer`](https://pptr.dev/)                                                                               | Headless Chromium used by `resumed export` to render the PDF              |
+| [`@jsonresume/ats-validator`](https://github.com/jsonresume/jsonresume.org/tree/master/packages/ats-validator) | ATS scoring (`validate`)                                                  |
+| [`typescript`](https://www.typescriptlang.org/)                                                                | Type-checks `scripts/**/*.mjs` via JSDoc (`typecheck`)                    |
+| `@types/node`                                                                                                  | Node.js types for the above                                               |
+| [`prettier`](https://prettier.io/)                                                                             | Formatting (`format`, and auto-fix via lint-staged)                       |
+| [`lint-staged`](https://github.com/lint-staged/lint-staged)                                                    | Runs Prettier/typecheck on staged files                                   |
+| [`husky`](https://typicode.github.io/husky/)                                                                   | Manages git hooks (`pre-commit`, `commit-msg`)                            |
+| [`@commitlint/cli`](https://commitlint.js.org/) + `@commitlint/config-conventional`                            | Enforces Conventional Commits (`commitlint`)                              |
 
 ## Development
 
