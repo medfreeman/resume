@@ -1,15 +1,20 @@
 name: Update Resume Gist
 
 on:
-  push:
+  workflow_run:
+    workflows: [CI]
     branches: [main]
+    types: [completed]
 
 jobs:
   update-resume-gist:
     runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
 
       - name: Update Resume Gist
         uses: exuanbo/actions-deploy-gist@v1

@@ -59,7 +59,7 @@ CI also publishes a separate `ATS score` check with the score and grade (e.g. "A
 
 ## Automatic registry updates
 
-The [live version](https://registry.jsonresume.org/medfreeman) is served from a GitHub Gist, kept in sync by the [`resume.yml`](.github/workflows/resume.yml) workflow, which pushes `resume.json` to that gist on every push to `main`.
+The [live version](https://registry.jsonresume.org/medfreeman) is served from a GitHub Gist, kept in sync by the [`resume.yml`](.github/workflows/resume.yml) workflow. It runs after the `CI` workflow completes on `main`, and only pushes `resume.json` to the gist if CI succeeded — a failing push never updates the live version.
 
 One-time setup:
 
@@ -68,7 +68,7 @@ One-time setup:
 3. Add it as a repository secret named `GIST_PUBLISH_TOKEN` (Settings > Secrets and variables > Actions).
 4. Set that gist's ID as `gist_id` in `.github/workflows/resume.yml`.
 
-After this, pushing changes to `resume.json` updates the gist, and the registry reflects it within a minute.
+After this, a push to `main` that passes CI updates the gist, and the registry reflects it within a minute.
 
 ## Development
 
