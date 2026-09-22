@@ -2,6 +2,7 @@
   "extensions": {
     "recommendations": [
       "esbenp.prettier-vscode",
+      "github.vscode-github-actions",
       "rohit-gohri.format-code-action"
     ]
   },
