@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+  checks: write
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -19,4 +23,48 @@ jobs:
       - run: npm run format
       - run: npm run typecheck
       - run: npm test
-      - run: npm run validate
+
+      - name: ATS validation
+        id: ats
+        run: npm run validate
+        continue-on-error: true
+
+      - name: Publish ATS score check
+        if: always()
+        uses: actions/github-script@v7
+        env:
+          ATS_SCORE: ${{ steps.ats.outputs.score }}
+          ATS_GRADE: ${{ steps.ats.outputs.grade }}
+          ATS_MIN_SCORE: ${{ steps.ats.outputs.min_score }}
+          ATS_PASSED: ${{ steps.ats.outputs.passed }}
+        with:
+          script: |
+            const { ATS_SCORE, ATS_GRADE, ATS_MIN_SCORE, ATS_PASSED } = process.env;
+            const headSha = context.payload.pull_request?.head.sha ?? context.sha;
+
+            const output = ATS_SCORE
+              ? {
+                  title: `ATS score: ${ATS_SCORE}/100 (${ATS_GRADE})`,
+                  summary:
+                    ATS_PASSED === "true"
+                      ? `Score ${ATS_SCORE}/100 meets the required minimum of ${ATS_MIN_SCORE}.`
+                      : `Score ${ATS_SCORE}/100 is below the required minimum of ${ATS_MIN_SCORE}.`,
+                }
+              : {
+                  title: "ATS validation did not complete",
+                  summary: 'See the "ATS validation" step logs for details.',
+                };
+
+            await github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: "ATS score",
+              head_sha: headSha,
+              status: "completed",
+              conclusion: ATS_PASSED === "true" ? "success" : "failure",
+              output,
+            });
+
+      - name: Enforce ATS score threshold
+        if: steps.ats.outcome == 'failure'
+        run: exit 1

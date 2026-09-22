@@ -49,6 +49,8 @@ npm run format
 
 The [`CI`](.github/workflows/ci.yml) workflow runs `npm run format`, `npm run typecheck`, `npm test`, and `npm run validate` on every push and pull request targeting `main`. The `validate` check is required on `main` (including for admins) via branch protection.
 
+CI also publishes a separate `ATS score` check with the score and grade (e.g. "ATS score: 94/100 (A)"), visible directly in the commit/PR checks list.
+
 ## Automatic registry updates
 
 The [live version](https://registry.jsonresume.org/medfreeman) is served from a GitHub Gist, kept in sync by the [`resume.yml`](.github/workflows/resume.yml) workflow, which pushes `resume.json` to that gist on every push to `main`.

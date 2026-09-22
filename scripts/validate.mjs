@@ -1,5 +1,5 @@
 // @ts-check
-import { readFile } from "node:fs/promises";
+import { appendFile, readFile } from "node:fs/promises";
 import process from "node:process";
 import { getRecommendations, validateATS } from "@jsonresume/ats-validator";
 import { render } from "jsonresume-theme-modern-classic/dist";
@@ -29,6 +29,23 @@ function parseMinScore() {
 }
 
 /**
+ * Writes a `name=value` line to the file at `$GITHUB_OUTPUT`, if set, so a
+ * later workflow step can read it via `steps.<id>.outputs.<name>`.
+ * @param {string} name
+ * @param {string} value
+ * @returns {Promise<void>}
+ */
+async function setGithubOutput(name, value) {
+  const outputPath = process.env.GITHUB_OUTPUT;
+
+  if (!outputPath) {
+    return;
+  }
+
+  await appendFile(outputPath, `${name}=${value}\n`);
+}
+
+/**
  * @typedef {object} AtsCheck
  * @property {string} name
  * @property {number} score
@@ -54,6 +71,7 @@ async function main() {
   const html = await render(resume);
 
   const result = /** @type {AtsResult} */ (validateATS(html));
+  const passed = result.score >= minScore;
 
   console.log(
     `ATS score: ${result.score}/100 (${result.grade}, ${result.atsCompatibility})`,
@@ -64,7 +82,12 @@ async function main() {
     console.log(recommendation);
   }
 
-  if (result.score < minScore) {
+  await setGithubOutput("score", String(result.score));
+  await setGithubOutput("grade", result.grade);
+  await setGithubOutput("min_score", String(minScore));
+  await setGithubOutput("passed", String(passed));
+
+  if (!passed) {
     console.error(
       `\nATS score ${result.score} is below the required minimum of ${minScore}.`,
     );
