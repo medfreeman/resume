@@ -1,0 +1,40 @@
+{
+  "name": "resume",
+  "version": "1.0.0",
+  "description": "Resume of Mehdi Lahlou",
+  "keywords": [
+    "resume",
+    "json-resume"
+  ],
+  "homepage": "https://github.com/medfreeman/resume#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/medfreeman/resume.git"
+  },
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Mehdi Lahlou",
+    "email": "mlahlou@protonmail.ch",
+    "url": "https://registry.jsonresume.org/medfreeman"
+  },
+  "type": "module",
+  "scripts": {
+    "render": "resumed render --theme jsonresume-theme-modern-classic/dist",
+    "export": "resumed export --theme jsonresume-theme-modern-classic/dist --export ./resume.pdf",
+    "test": "resumed validate ./resume.json",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@jsonresume/ats-validator": "0.3.0",
+    "husky": "9.1.7",
+    "jsonresume-theme-modern-classic": "1.1.4",
+    "lint-staged": "17.5.1",
+    "prettier": "3.9.8",
+    "puppeteer": "25.11.0",
+    "resumed": "7.0.0"
+  },
+  "lint-staged": {
+    "resume.code-workspace": "prettier --write",
+    "*.json": "prettier --write"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "rohit-gohri.format-code-action"
+    ]
+  },
+  "folders": [{ "path": "." }],
+  "settings": {
+    "[json]": {
+      "editor.formatOnSave": false,
+      "editor.codeActionsOnSave": {
+        "source.fixAll.prettier": "explicit"
+      }
+    },
+    "[jsonc]": {
+      "editor.formatOnSave": false,
+      "editor.codeActionsOnSave": {
+        "source.fixAll.prettier": "explicit"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": ["resume.code-workspace"],
+      "options": { "parser": "jsonc", "trailingComma": "none" }
+    }
+  ]
+}

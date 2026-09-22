@@ -1,0 +1,23 @@
+# Reflects what is already in the tree: 2-space indent for TS/JS/JSON/YAML,
+# 4-space for shell and Python, no tabs anywhere, LF throughout.
+#
+# LF is not a style choice here. compose/render/docker/downscale/downscale.sh runs inside a Linux
+# container, and the compose files, workspace.dsl, and manifest.json are all
+# read from bind mounts by Linux processes. See .gitattributes, which enforces
+# the same thing at commit time.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+max_line_length = 80
+
+# Trailing whitespace is significant in Markdown (two spaces = hard break),
+# and prose here wraps by hand rather than to a hard column.
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
