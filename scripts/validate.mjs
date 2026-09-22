@@ -72,13 +72,14 @@ async function main() {
 
   const result = /** @type {AtsResult} */ (validateATS(html));
   const passed = result.score >= minScore;
+  const recommendations = getRecommendations(result);
 
   console.log(
     `ATS score: ${result.score}/100 (${result.grade}, ${result.atsCompatibility})`,
   );
   console.log(`Checks passed: ${result.passed}, failed: ${result.failed}`);
 
-  for (const recommendation of getRecommendations(result)) {
+  for (const recommendation of recommendations) {
     console.log(recommendation);
   }
 
@@ -86,6 +87,24 @@ async function main() {
   await setGithubOutput("grade", result.grade);
   await setGithubOutput("min_score", String(minScore));
   await setGithubOutput("passed", String(passed));
+
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    const lines = [
+      `## ATS Score: ${result.score}/100 (${result.grade})`,
+      "",
+      `**Compatibility:** ${result.atsCompatibility} · **Passed:** ${result.passed}/${result.checks.length} checks`,
+      "",
+      ...result.checks.map(
+        (check) =>
+          `- ${check.passed ? "✅" : "❌"} ${check.name}: ${check.score}/${check.maxScore}`,
+      ),
+      "",
+      ...(recommendations.length
+        ? ["### Recommendations", ...recommendations.map((r) => `- ${r}`)]
+        : []),
+    ];
+    await appendFile(process.env.GITHUB_STEP_SUMMARY, lines.join("\n") + "\n");
+  }
 
   if (!passed) {
     console.error(
