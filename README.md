@@ -45,9 +45,15 @@ Check formatting:
 npm run format
 ```
 
+Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/), enforced by [commitlint](https://commitlint.js.org/):
+
+```bash
+npm run commitlint -- --from <ref> --to <ref>
+```
+
 ## Continuous integration
 
-The [`CI`](.github/workflows/ci.yml) workflow runs `npm run format`, `npm run typecheck`, `npm test`, and `npm run validate` on every push and pull request targeting `main`. The `validate` check is required on `main` (including for admins) via branch protection.
+The [`CI`](.github/workflows/ci.yml) workflow runs `npm run commitlint`, `npm run format`, `npm run typecheck`, `npm test`, and `npm run validate` on every push and pull request targeting `main`. The `validate` check is required on `main` (including for admins) via branch protection.
 
 CI also publishes a separate `ATS score` check with the score and grade (e.g. "ATS score: 94/100 (A)"), visible directly in the commit/PR checks list.
 
@@ -66,4 +72,4 @@ After this, pushing changes to `resume.json` updates the gist, and the registry 
 
 ## Development
 
-Commits are linted and formatted automatically via Husky and lint-staged: Prettier on `resume.json` and `resume.code-workspace`, and type checking (`npm run typecheck`, via [jsconfig.json](jsconfig.json) and JSDoc annotations) on `scripts/**/*.mjs`.
+Commits are linted and formatted automatically via Husky: lint-staged runs Prettier on `resume.json` and `resume.code-workspace`, and type checking (`npm run typecheck`, via [jsconfig.json](jsconfig.json) and JSDoc annotations) on `scripts/**/*.mjs`; a `commit-msg` hook runs commitlint on the commit message.

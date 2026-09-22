@@ -25,9 +25,12 @@
     "validate": "node scripts/validate.mjs 90",
     "format": "prettier --check .",
     "typecheck": "tsc -p jsconfig.json",
+    "commitlint": "commitlint",
     "prepare": "husky"
   },
   "devDependencies": {
+    "@commitlint/cli": "21.2.3",
+    "@commitlint/config-conventional": "21.2.3",
     "@jsonresume/ats-validator": "0.3.0",
     "@types/node": "26.6.2",
     "husky": "9.1.7",
