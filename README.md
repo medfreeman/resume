@@ -30,6 +30,14 @@ Export to PDF (`resume.pdf`):
 npm run export
 ```
 
+Watch `resume.json` and live-reload a preview of `resume.html` as you edit:
+
+```bash
+npm run watch
+```
+
+This renders once, then serves `resume.html` at <http://localhost:3000> via [`browser-sync`](https://browsersync.io/); on every `resume.json` change it re-renders and refreshes the page automatically.
+
 Validate `resume.json` against the JSON Resume schema:
 
 ```bash
@@ -79,19 +87,21 @@ After this, a push to `main` that passes CI updates the gist, and the registry r
 
 All dependencies are dev-only — the resume itself has no runtime dependencies.
 
-| Package                                                                                                        | Used for                                                                  |
-| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [`resumed`](https://github.com/rbardini/resumed)                                                               | Rendering, PDF export, and schema validation (`render`, `export`, `test`) |
-| [`jsonresume-theme-modern-classic`](https://www.npmjs.com/package/jsonresume-theme-modern-classic)             | HTML/PDF theme                                                            |
-| [`puppeteer`](https://pptr.dev/)                                                                               | Headless Chromium used by `resumed export` to render the PDF              |
-| [`@jsonresume/ats-validator`](https://github.com/jsonresume/jsonresume.org/tree/master/packages/ats-validator) | ATS scoring (`validate`)                                                  |
-| [`typescript`](https://www.typescriptlang.org/)                                                                | Type-checks `scripts/**/*.mjs` via JSDoc (`typecheck`)                    |
-| `@types/node`                                                                                                  | Node.js types for the above                                               |
-| [`prettier`](https://prettier.io/)                                                                             | Formatting (`format`, and auto-fix via lint-staged)                       |
-| [`lint-staged`](https://github.com/lint-staged/lint-staged)                                                    | Runs Prettier/typecheck on staged files                                   |
-| [`husky`](https://typicode.github.io/husky/)                                                                   | Manages git hooks (`pre-commit`, `commit-msg`)                            |
-| [`@commitlint/cli`](https://commitlint.js.org/) + `@commitlint/config-conventional`                            | Enforces Conventional Commits (`commitlint`)                              |
+| Package                                                                                                        | Used for                                                                   |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [`resumed`](https://github.com/rbardini/resumed)                                                               | Rendering, PDF export, and schema validation (`render`, `export`, `test`)  |
+| [`jsonresume-theme-modern-classic`](https://www.npmjs.com/package/jsonresume-theme-modern-classic)             | HTML/PDF theme                                                             |
+| [`puppeteer`](https://pptr.dev/)                                                                               | Headless Chromium used by `resumed export` to render the PDF               |
+| [`@jsonresume/ats-validator`](https://github.com/jsonresume/jsonresume.org/tree/master/packages/ats-validator) | ATS scoring (`validate`)                                                   |
+| [`browser-sync`](https://browsersync.io/)                                                                      | Live-reload dev server (`watch`)                                           |
+| [`typescript`](https://www.typescriptlang.org/)                                                                | Type-checks `scripts/**/*.mjs` and `bs-config.cjs` via JSDoc (`typecheck`) |
+| `@types/node`                                                                                                  | Node.js types for the above                                                |
+| `@types/browser-sync`                                                                                          | Types for `bs-config.cjs` (`typecheck`)                                    |
+| [`prettier`](https://prettier.io/)                                                                             | Formatting (`format`, and auto-fix via lint-staged)                        |
+| [`lint-staged`](https://github.com/lint-staged/lint-staged)                                                    | Runs Prettier/typecheck on staged files                                    |
+| [`husky`](https://typicode.github.io/husky/)                                                                   | Manages git hooks (`pre-commit`, `commit-msg`)                             |
+| [`@commitlint/cli`](https://commitlint.js.org/) + `@commitlint/config-conventional`                            | Enforces Conventional Commits (`commitlint`)                               |
 
 ## Development
 
-Commits are linted and formatted automatically via Husky: a `pre-commit` hook bumps `meta.version` (patch) and sets `meta.lastModified` to today whenever `resume.json` is staged (`npm run bump-resume-meta`), then lint-staged runs Prettier on `resume.json` and `resume.code-workspace`, and type checking (`npm run typecheck`, via [jsconfig.json](jsconfig.json) and JSDoc annotations) on `scripts/**/*.mjs`; a `commit-msg` hook runs commitlint on the commit message.
+Commits are linted and formatted automatically via Husky: a `pre-commit` hook bumps `meta.version` (patch) and sets `meta.lastModified` to today whenever `resume.json` is staged (`npm run bump-resume-meta`), then lint-staged runs Prettier on `resume.json` and `resume.code-workspace`, and type checking (`npm run typecheck`, via [jsconfig.json](jsconfig.json) and JSDoc annotations) on `scripts/**/*.mjs` and `bs-config.cjs`; a `commit-msg` hook runs commitlint on the commit message.
